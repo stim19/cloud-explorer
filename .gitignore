@@ -1,6 +1,4 @@
 __pycache_/
-*.py[cod]
-*$py.class
 
 venv/
 env/
