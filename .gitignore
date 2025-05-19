@@ -7,6 +7,7 @@ env/
 *.venv
 
 uploads/*
+!uploads/README.md
 
 .vscode/
 
