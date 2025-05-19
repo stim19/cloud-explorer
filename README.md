@@ -2,21 +2,21 @@
 
 A simple Flask based file manager with user authentication.
 
-#Setup Instructions
+# Setup Instructions
 
-##Clone the repository
+## Clone the repository
 
-##Install dependencies
+## Install dependencies
 
 pip install -r requirements.txt
 
-##Run the app
+## Run the app
 flask run
 
-##Access the app:
+## Access the app:
 Open http://127.0.0.1:5000 in your browser.
 
-Upcoming features:
+## Upcoming features:
 
 Progress bar for file uploads
 Enhanced search functionality
