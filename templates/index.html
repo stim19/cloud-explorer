@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width", initial-scale="1.0">	
+	<title>File Explorer -MVP</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<div class="container">
+		<h1>File Explorer</h1>
+		<form action="/" method="post" enctype="multipart/form-data">
+			<input type="file" name="file">
+			<button type="submit">Upload</button>
+		</form>
+		<h2>Uploaded Files</h2>
+		<ul>
+			{% for file in files %} 
+				<li>
+					<a href="/uploads/{{file}}">{{file.name}}</a>
+					<form action="/delete/{{file['name']}}" method="post" style="display: inline;">
+						<button type="submit">Delete</button>
+					</form>
+				</li>
+			{% endfor %}
+		</ul>
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				<ul class="flash-messages">
+					{% for category, message in messages %}
+						<li class="{{category}}">{{messages}}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+	</div>
+	<div class="mt-5">
+		<h2>Files</h2>
+		<table class="table table-striped mt-3">
+			<thead>
+				<tr>
+					<th scope="col">File Name</th>
+					<th scope="col">Size</th>
+					<th scope="col">Last Modified</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for file in files %}
+				<tr>
+					<td>{{ file['name'] }}</td>
+					<td>{{ "{:.2f}".format(file['size']/1024)}}</td>
+					<td>{{ file['modified']}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
