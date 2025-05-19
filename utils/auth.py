@@ -1,6 +1,6 @@
 from flask_login import UserMixin
 USERS = {
-	"pookie": {"password":"a"}
+	"a": {"password":"a"}
 }
 
 class User(UserMixin):
