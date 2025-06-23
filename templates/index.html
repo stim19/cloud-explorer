@@ -2,13 +2,30 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width", initial-scale="1.0">	
 	<title>File Explorer -MVP</title>
 	<link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-	<div class="container">
+	<div class="container mt-5">
 		<h1>File Explorer</h1>
+		<!--Search Bar-->
+		<a href="{{ url_for('logout')}}">Logout</a>
+		<h2>Search Results</h2>
+		<form method="get" action="/search">
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" name="query" placeholder="Search files..." aria-label="Search files">
+				<button class="btn btn-primary" type="submit">Search</button>
+			</div>
+		</form>
+		<ul>
+			{% for file in filtered_files %} 
+				<li>
+					{{file.name}}	
+				</li>
+			{% endfor %}
+		</ul>
 		<form action="/" method="post" enctype="multipart/form-data">
 			<input type="file" name="file">
 			<button type="submit">Upload</button>
@@ -33,27 +50,9 @@
 				</ul>
 			{% endif %}
 		{% endwith %}
+
 	</div>
-	<div class="mt-5">
-		<h2>Files</h2>
-		<table class="table table-striped mt-3">
-			<thead>
-				<tr>
-					<th scope="col">File Name</th>
-					<th scope="col">Size</th>
-					<th scope="col">Last Modified</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for file in files %}
-				<tr>
-					<td>{{ file['name'] }}</td>
-					<td>{{ "{:.2f}".format(file['size']/1024)}}</td>
-					<td>{{ file['modified']}}</td>
-				</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</div>
+	
+<script src="https://cdn.jsdeliver.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
