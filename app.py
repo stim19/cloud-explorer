@@ -43,6 +43,14 @@ def login():
 		flash('Invalid creds, try again.')
 	return render_template('login.html')
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+	if request.method == 'POST':
+		username=request.form.get('username')
+		password=request.form.get('password')
+		user=User(username=username, role='user')
+		user.password=password
+
 def admin_required(f):
 	@wraps(f)
 	def decorated_function(*args, **kwargs):
@@ -58,8 +66,6 @@ def admin_panel():
 	if current_user.role !='admin':
 		abort(403)
 	return render_template('dashboard.html')
-
-
 
 @app.route('/logout')
 @login_required
