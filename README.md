@@ -1,24 +1,16 @@
-# clouds-file
+# Cloud Explorer
 
-A simple Flask based file manager with user authentication.
+Welcome!  
+This app that lets you manage files on your server from your browser—upload, download, organize, all in one place. 
 
-# Setup Instructions
-### Clone the repository
-```git clone```
-### Install dependencies
+---
 
-```pip install -r requirements.txt```
+**How to start:**  
+1. Clone this repo  
+2. `pip install -r requirements.txt`  
+3. `flask run`  
+4. Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser
 
-### Run the app
-```flask run```
+---
 
-### Access the app:
-Open `http://127.0.0.1:5000` in your browser.
-
-### Upcoming features:
-
-Progress bar for file uploads
-
-Enhanced search functionality
-
-User permissions
+Take it easy and enjoy your files 💛
